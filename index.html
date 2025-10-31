@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js)
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-90TCG4QQ5H"></script>
+
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-90TCG4QQ5H');
+    </script>
+    -->
+
+    <title>PB Viewer</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+    <!-- Caching -->  
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="expires" content="timestamp">
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link type="text/css" rel="stylesheet" href="./index.css">
+  </head>
+
+  <body>
+  <script type="importmap"> { 
+    "imports": {
+      "three": "./node_modules/three/build/three.module.js",
+      "three/addons/": "./node_modules/three/examples/jsm/",
+      "three/nodes": "./node_modules/three/examples/jsm/nodes/Nodes.js"
+      }
+  }
+  </script>
+  <script>
+  // Back to menu
+  document.addEventListener("keyup", function(e){
+    if(e.keyCode == 27 || e.keyCode == 32) {
+      window.location.href = '.';
+    }
+  })
+  </script>
+
+   <!-- TODO: Make preview for flat screen (?) -->
+  <dialog id="preview" style="background-color:#FDFFD5">
+    <img id="image" onclick="document.getElementById('preview').close()"></img>
+    <div id='vr_button'></div>
+  </dialog>
+
+  <script type="module" src="./viewImage.js"></script>
+  <script type="module" src="./viewModel.js"></script>
+
+  <header>
+    <div id='head' style="margin: 10px;" onclick="window.location.href = '.'">PB Viewer 0.02b<img src="./data/icons/back.png" style="position: absolute; top:3px; left:auto; right:10px; opacity:80%"></div>
+    <hr>
+  </header>
+
+  <script>
+    // fetch("./header.html")
+    //   .then(response => {
+    //     return response.text()
+    //   }).then(data => {
+    //     document.getElementById('header').innerHTML = data;
+    //   });
+
+    // function about() {
+    //   document.getElementById("about").showModal();
+    // }
+  </script>
+
+  <!-- Name, description hidden -->
+  <div id="name" style="display:none"></div>
+  <div id="description" style="display:none"></div>
+
+  <div id="container"></div>
+
+  <div id="list"><br>
+  <div href='' onclick='viewModel("test/model")'    class="link">0. Sphere</div>
+  <div href='' onclick='viewModel("dog_man/final")' class="link">1. Dog man</div>
+  <div href='' onclick='viewModel("dragon/dragon")' class="link">2. Dragon</div>
+  <div href='' onclick='viewModel("hindu/model")'   class="link">3. Hindu</div>
+  <div href='' onclick='viewModel("yup/model_t1")'  class="link">4. Yup</div>
+
+<!--
+  <img id="p1" src="./data/icons/link.png" alt='link'  onclick='viewImage("odsp1_left.png",
+                                                                          "odsp2_left.png",
+                                                                          Proj.CYLINDER)'>
+
+  <img id="p2" src="./data/images/pb/HampiIndia_VR180_infinite_zeroparallax/PDB_3272_icon.png" alt='link' 
+                onclick='viewImage("pb/HampiIndia_VR180_infinite_zeroparallax/PDB_3272_left.jpg",
+                                  "pb/HampiIndia_VR180_infinite_zeroparallax/PDB_3272_right.jpg",
+                                    Proj.VR180)'>
+
+  <img id="p3" src="./data/images/pb/HampiIndia_VR180_infinite_zeroparallax/PDB_3253_icon.png" alt='link' 
+                onclick='viewImage("pb/HampiIndia_VR180_infinite_zeroparallax/PDB_3253_left.jpg",
+                                  "pb/HampiIndia_VR180_infinite_zeroparallax/PDB_3253_right.jpg",
+                                    Proj.VR180)'><br>
+-->
+  </div>
+
+  <!-- Stat -->
+  <div style='position: absolute; top:60px; left:10px; width:800px; z-index:4; opacity:60%; font-size: 1.1rem; font-style: italic;'>
+    <div id="stat" style="display: none;">Meshes 0 / Points 0 / Faces 0</div>
+  </div>
+
+  <!-- Progress -->
+  <div id="progress-container">
+    <label id="progress-label" for="progress-bar"></label>
+    <progress id="progress-bar" value="0" max="100"></progress>
+  </div>
+
+  <!-- Studio link
+  <a href="https://yesbird.online/" target="_blank" rel="noopener noreferrer" style="position:fixed; bottom: 10px; right: 20px; font-size: 120%; font-style: italic; color: #cccdce;">Yesbird studio 2025</a>
+  -->
+
+  <script>
+    // https://127.0.0.1:8086/?m=deep_space&e=env_space
+    window.onload = function() {
+      const params = new URLSearchParams(window.location.search);
+      const model = params.get('m');
+      const env = params.get('e');
+      const rotate = params.get('r');
+
+      // viewModel("obj/test/model.obj");
+      // viewModel("obj/dog_man/final.obj");
+/*
+      if(model) {
+        viewModel(model, env, rotate);
+      }
+*/
+    };
+  </script>
+
+	</body>
+</html>
