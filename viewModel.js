@@ -1,10 +1,3 @@
-// TODO
-// - Total cleanup on getting back to menu
-// - Set FlatShading in userData
-// - Set position (y,z), GUI ranges, env. in userData (?)
-// - Set FlatShading in userData
-// - Ring as here: C:\xampp\htdocs\jview\main.js 
-//
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { AsyncLoader } from './modules/AsyncLoader.js';
