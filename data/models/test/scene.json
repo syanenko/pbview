@@ -1,12 +1,12 @@
 {
   "name": "Test",
 
-  "geometry": "model.obj",
-  "texture": "model.jpg",
+  "geometry": "cube.obj",
+  "texture": "cube_tex.jpg",
 
   "background_color": {"r": 128, "g": 128, "b": 128 },
 
-  "view_axis": {"x": 1, "y": 0, "z": 0 },
+  "view_axis": {"x": 3, "y": 0, "z": 0 },
   "up_vector": {"x": 1, "y": 0, "z": 0 },
 
   "bounds_min": {"x": -1, "y": -1, "z": -1 },

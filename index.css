@@ -472,6 +472,7 @@ dialog
 .link {
   position: relative;
   cursor: pointer;
+  width: max-content;
 }
 
 /* Progress */

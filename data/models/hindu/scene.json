@@ -6,8 +6,8 @@
 
   "background_color": {"r": 128, "g": 128, "b": 128 },
 
-  "view_axis": {"x": 1, "y": 0, "z": 0 },
-  "up_vector": {"x": 1, "y": 0, "z": 0 },
+  "view_axis": {"x": 2, "y": 0, "z": 0 },
+  "up_vector": {"x": 0, "y": 0, "z": 1 },
 
   "bounds_min": {"x": -1, "y": -1, "z": -1 },
   "bounds_max": {"x": 1, "y": 1, "z": 1 },

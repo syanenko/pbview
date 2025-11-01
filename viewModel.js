@@ -43,7 +43,6 @@ let rotate = false;
 
 let sd;
 let model;
-const modpos = {"x":0, "y":-0.5, "z":-2 };
 let animate = [];
 
 const help = true;
@@ -87,7 +86,8 @@ async function viewModel(name) {
   console.log(sd);
 
   camera = new THREE.PerspectiveCamera( FOV, window.innerWidth / window.innerHeight, 0.1, 1100 );
-  camera.position.set( modpos.x, -modpos.y, -modpos.z);
+  camera.position.set( sd.view_axis.x, sd.view_axis.y, sd.view_axis.z );
+  camera.up.set(sd.up_vector.x, sd.up_vector.y, sd.up_vector.z);
 
   scene = new THREE.Scene();
   scene.add( camera );
@@ -224,7 +224,6 @@ export async function loadModel(name)
 function initControls()
 {
   controls = new OrbitControls( camera, renderer.domElement );
-  //controls.target.set( modpos.x, modpos.y, modpos.z ); // DEBUG XR mode (?)
   controls.target.set( 0, 0, 0 );
   controls.enablePan = true;
   controls.enableDamping = false;
@@ -238,7 +237,6 @@ function initGUI()
   //gui.add( params, 'scale', 0.1, 5.0, 0.01 ).name( 'Scale' ).onChange(onScale);
   //gui.add( params, 'x', -500, 500, 0.01 ).name( 'X' ).onChange(onX);
   //gui.add( params, 'y', -1, 1, 0.01 ).name( 'Height' ).onChange(onY);
-  //gui.add( params, 'z', -3, -modpos.z, 0.01 ).name( 'Distance' ).onChange(onZ);
   //gui.add( params, 'rx', -Math.PI, Math.PI, 0.01 ).name( 'Rot X' ).onChange( onRotation );
   //gui.add( params, 'ry', -Math.PI, Math.PI, 0.01 ).name( 'Rotate' ).onChange( onRotation );
   //gui.add( params, 'rz', -Math.PI, Math.PI, 0.01 ).name( 'Rot Z' ).onChange( onRotation );
@@ -403,7 +401,7 @@ function onY() {
   }
 }
 
-function onZ() {
+function onZ() {params
   if (typeof model != "undefined") {
     console.log(params.z);
     model.position.setZ( params.z );
@@ -425,9 +423,9 @@ function onReset()
   controls.reset();
 
   if(renderer.xr.isPresenting) {
-    params.x = modpos.x;
-    params.y = modpos.y;
-    params.z = modpos.z;
+    params.x = sd.view_axis.x;
+    params.y = sd.view_axis.y;
+    params.z = sd.view_axis.z;
   } else {
     params.x = 0;
     params.y = 0;
