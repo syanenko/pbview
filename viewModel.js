@@ -151,7 +151,7 @@ function viewModel(name) {
   if(rotate)
     params.switch_any();
 
-  // displayAxis(true);
+  displayAxis(true);
 }
 window.viewModel = viewModel;
 
@@ -261,7 +261,7 @@ let axis_o = new THREE.Vector3(0,0,0);
 let axis_x = new THREE.Vector3(1,0,0);
 let axis_y = new THREE.Vector3(0,1,0);
 let axis_z = new THREE.Vector3(0,0,1);
-let axis_len = 10;
+let axis_len = 4;
 
 async function displayAxis(checked) {
   if(checked) {

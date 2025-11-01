@@ -48,26 +48,12 @@
     <div id='vr_button'></div>
   </dialog>
 
-  <script type="module" src="./viewImage.js"></script>
   <script type="module" src="./viewModel.js"></script>
 
   <header>
     <div id='head' style="margin: 10px;" onclick="window.location.href = '.'">PB Viewer 0.02b<img src="./data/icons/back.png" style="position: absolute; top:3px; left:auto; right:10px; opacity:80%"></div>
     <hr>
   </header>
-
-  <script>
-    // fetch("./header.html")
-    //   .then(response => {
-    //     return response.text()
-    //   }).then(data => {
-    //     document.getElementById('header').innerHTML = data;
-    //   });
-
-    // function about() {
-    //   document.getElementById("about").showModal();
-    // }
-  </script>
 
   <!-- Name, description hidden -->
   <div id="name" style="display:none"></div>
@@ -77,10 +63,10 @@
 
   <div id="list"><br>
   <div href='' onclick='viewModel("test/model")'    class="link">0. Sphere</div>
-  <div href='' onclick='viewModel("dog_man/final")' class="link">1. Dog man</div>
-  <div href='' onclick='viewModel("dragon/dragon")' class="link">2. Dragon</div>
-  <div href='' onclick='viewModel("hindu/model")'   class="link">3. Hindu</div>
-  <div href='' onclick='viewModel("yup/model_t1")'  class="link">4. Yup</div>
+  <div href='' onclick='viewModel("hindu/model")'   class="link">1. Hindu</div>
+  <div href='' onclick='viewModel("yup/model_t1")'  class="link">2. Yup</div>
+  <div href='' onclick='viewModel("dragon/dragon")' class="link">3. Dragon</div>
+  <div href='' onclick='viewModel("dog_man/final")' class="link">4. Dog man</div>
 
 <!--
   <img id="p1" src="./data/icons/link.png" alt='link'  onclick='viewImage("odsp1_left.png",
