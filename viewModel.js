@@ -209,7 +209,7 @@ export async function loadModel(name)
     groupingSeparator: ' '
   }).format(vcount);
 
-  stat.innerHTML = '"' + name + '" / ' + mcount+ " meshe(s) / " + vcount + " points";
+  stat.innerHTML = '"' + sd.name + '" / ' + mcount+ " meshe(s) / " + vcount + " points";
   stat.style.display = "block";
 }
 
