@@ -1,8 +1,8 @@
 {
-  "name": "Test",
+  "name": "Dragon",
 
-  "geometry": "model.obj",
-  "texture": "model.jpg",
+  "geometry": "dragon.obj",
+  "texture": "dragon.jpg",
 
   "background_color": {"r": 128, "g": 128, "b": 128 },
 

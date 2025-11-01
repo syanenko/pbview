@@ -1,8 +1,8 @@
 {
-  "name": "Test",
+  "name": "Yup",
 
-  "geometry": "model.obj",
-  "texture": "model.jpg",
+  "geometry": "model_t1.obj",
+  "texture": "model_t1.jpg",
 
   "background_color": {"r": 128, "g": 128, "b": 128 },
 

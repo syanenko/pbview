@@ -1,8 +1,8 @@
 {
-  "name": "Test",
+  "name": "Dog man",
 
-  "geometry": "model.obj",
-  "texture": "model.jpg",
+  "geometry": "final.obj",
+  "texture": "final.jpg",
 
   "background_color": {"r": 128, "g": 128, "b": 128 },
 

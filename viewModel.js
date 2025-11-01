@@ -41,6 +41,7 @@ const rotK = 3;
 let rotX, rotY;
 let rotate = false;
 
+let sd;
 let model;
 const modpos = {"x":0, "y":-0.5, "z":-2 };
 let animate = [];
@@ -65,8 +66,26 @@ let params = {
                            param_changed = true; },
   speed: -0.003 }
 
+// Fetch scene description
+async function fetchScene(path) {
+  try {
+    const response = await fetch(path);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json(); // Or response.json() if it's a JSON file
+    return data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return null;
+  }
+}
+
 // View scene
-function viewModel(name) {
+async function viewModel(name) {
+  sd = await fetchScene( MODEL_PATH + name + "/scene.json");
+  console.log(sd);
+
   camera = new THREE.PerspectiveCamera( FOV, window.innerWidth / window.innerHeight, 0.1, 1100 );
   camera.position.set( modpos.x, -modpos.y, -modpos.z);
 
@@ -158,9 +177,8 @@ window.viewModel = viewModel;
 // Load model
 export async function loadModel(name)
 {
-  model = (await AsyncLoader.loadOBJAsync(MODEL_PATH + name + ".obj"));
-  console.log(MODEL_PATH + name);
-  console.log(model);
+  name = MODEL_PATH + name + "/";
+  model = (await AsyncLoader.loadOBJAsync( name + sd.geometry));
 
   await renderer.compileAsync( model, camera, scene );
   model.name='model';
@@ -179,7 +197,7 @@ export async function loadModel(name)
           node.material.dispose();
         }
         const tl = new THREE.TextureLoader();
-        const map = tl.load(MODEL_PATH + name + ".jpg");
+        const map = tl.load(name + sd.texture);
         map.colorSpace = THREE.SRGBColorSpace;
         node.material = new THREE.MeshMatcapMaterial( {map: map, side: THREE.DoubleSide } );
         node.material.needsUpdate = true;
