@@ -1,6 +1,6 @@
 ## <i>PB Viewer</i>
 
-_3D models viewer for Paul Bourke._<br>
+_3D models viewer for [Paul Bourke](https://paulbourke.net/)._<br>
 
 #### Instalation and running
 
