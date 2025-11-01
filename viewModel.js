@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
 import { AsyncLoader } from './modules/AsyncLoader.js';
 import { InteractiveGroup } from './modules/interactive/InteractiveGroup.js';
 import { HTMLMesh } from './modules/interactive/HTMLMesh.js';
@@ -24,7 +24,7 @@ let beam;
 const beam_color = 0xffffff;
 const beam_hilight_color = 0x222222;
 
-// Orbit controls
+// Trackball controls
 let controls;
 
 // XR controller
@@ -213,13 +213,15 @@ export async function loadModel(name)
   stat.style.display = "block";
 }
 
-// Init orbit controlls
+// Init controlls
 function initControls()
 {
-  controls = new OrbitControls( camera, renderer.domElement );
+  controls = new TrackballControls ( camera, renderer.domElement );
   controls.target.set( 0, 0, 0 );
-  controls.enablePan = true;
-  controls.enableDamping = false;
+  controls.staticMoving = true;
+  controls.panSpeed = 1;
+  controls.rotateSpeed = 3;
+  controls.zoomSpeed = 2;
 }
 
 // Init GUI
