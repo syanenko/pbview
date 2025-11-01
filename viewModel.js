@@ -5,7 +5,7 @@ import { InteractiveGroup } from './modules/interactive/InteractiveGroup.js';
 import { HTMLMesh } from './modules/interactive/HTMLMesh.js';
 import { GUI } from './node_modules/lil-gui/dist/lil-gui.esm.min.js';
 import { XRControllerModelFactory } from './modules/webxr/XRControllerModelFactory.js';
-import { VRButton } from './modules/webxr/VRButton.js';
+// import { VRButton } from './modules/webxr/VRButton.js';
 
 const MODEL_PATH = './data/models/';
 const ENV_PATH = './data/textures/';
@@ -17,7 +17,7 @@ let crot = new THREE.Quaternion();
 
 const FOV = 50;
 let textureLoader;
-let gui, gui_mesh;
+// let gui, gui_mesh;
 let param_changed = false;
 
 let beam;
@@ -120,7 +120,7 @@ async function viewModel(name) {
     crot.copy(camera.quaternion);
 
     renderer.setClearColor(new THREE.Color(0x000), 1);
-    gui.open();
+    // gui.open();
     onReset();
     // gui_mesh.visible = true;
   });
@@ -155,10 +155,10 @@ async function viewModel(name) {
   scene.add( light );
 */
 
-  let vrb = VRButton.createButton( renderer );
+  // let vrb = VRButton.createButton( renderer );
   //vrb.style.setProperty('position', 'absolute');
   //vrb.style.setProperty('top', '10px');
-  document.body.appendChild( vrb );
+  // document.body.appendChild( vrb );
  
   if(rotate)
     params.switch_any();
@@ -220,6 +220,7 @@ function initLights() {
     return;
 
   for(let i=0; i< sd.lights.length; i++) {
+
     const color = new THREE.Color().setRGB( sd.lights[i].color.r,
                                             sd.lights[i].color.g,
                                             sd.lights[i].color.b);
@@ -284,7 +285,7 @@ function initGUI()
   */
 
   // params.switch_any(); // By default
-  gui.close(); // Collapse by default
+  // gui.close(); // Collapse by default
 }
 
 //
@@ -451,9 +452,9 @@ function onReset()
     params.z = 0;
   }
 
-  for (var i in gui.controllers) {
-    gui.controllers[i].updateDisplay();
-  }
+  // for (var i in gui.controllers) {
+  //   gui.controllers[i].updateDisplay();
+  // }
 
   if(model) {
     model.position.set(params.x, params.y, params.z);
@@ -462,8 +463,8 @@ function onReset()
 
   // Y-rotation
   // params.any = false;
-  gui.controllers[1].$name.style.color = "#ff9127";
-  gui.controllers[3].$name.style.color = "#ff9127";
+  // gui.controllers[1].$name.style.color = "#ff9127";
+  // gui.controllers[3].$name.style.color = "#ff9127";
 
   if (model) {
     const euler = new THREE.Euler( 0, 0, 0, 'XYZ' );
