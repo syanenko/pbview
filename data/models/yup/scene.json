@@ -4,7 +4,7 @@
   "geometry": "model_t1.obj",
   "texture": "model_t1.jpg",
 
-  "background_color": {"r": 128, "g": 128, "b": 128 },
+  "background_color": {"r": 0.015, "g":0.015, "b": 0.015 },
 
   "view_axis": {"x": 0, "y": 0, "z": -2 },
   "up_vector": {"x": 0, "y": 1, "z": 0 },

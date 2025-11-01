@@ -101,8 +101,10 @@ async function viewModel(name) {
     scene.background = env;
     scene.backgroundIntensity = 0.4;
   }
-  // scene.background = new THREE.Color().setRGB( 0.5, 0.5, 0 );
   */
+  scene.background = new THREE.Color().setRGB( sd.background_color.r,
+                                               sd.background_color.g,
+                                               sd.background_color.b );
 
   renderer = new THREE.WebGLRenderer({ antialias: true, maxSamples: 4, alpha: true });
   renderer.setPixelRatio( window.devicePixelRatio );
