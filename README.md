@@ -11,6 +11,6 @@ _3D models viewer for Paul Bourke._<br>
    _npm run dev_
 4. Open browser at address: https://127.0.0.1:8086/
 5. Select desired scene
-6. Press <Esc> or <Space> to get back
+6. Press _Esc_ or _Space_ to get back
 
 Live demo: https://yesbird.online/pbview/
