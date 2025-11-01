@@ -76,7 +76,6 @@ async function fetchScene(path) {
 // View scene
 async function viewModel(name) {
   sd = await fetchScene( MODEL_PATH + name + "/scene.json");
-  console.log(sd);
 
   camera = new THREE.PerspectiveCamera( FOV, window.innerWidth / window.innerHeight, 0.1, 1100 );
   camera.position.set( sd.view_axis.x, sd.view_axis.y, sd.view_axis.z );
@@ -146,6 +145,7 @@ async function viewModel(name) {
   initControls();
   // initGUI();  
   initController();
+  initLights();
   loadModel(name);
 
   // Hilight controller
@@ -192,7 +192,8 @@ export async function loadModel(name)
         const tl = new THREE.TextureLoader();
         const map = tl.load(name + sd.texture);
         map.colorSpace = THREE.SRGBColorSpace;
-        node.material = new THREE.MeshMatcapMaterial( {map: map, side: THREE.DoubleSide } );
+        node.material = new THREE.MeshStandardMaterial( {map: map, side: THREE.DoubleSide } );
+        // node.material = new THREE.MeshStandardMaterial( {color: 0xFFFFFF, side: THREE.DoubleSide } ); // DEBUG
         node.material.needsUpdate = true;
       }
   });
@@ -212,6 +213,30 @@ export async function loadModel(name)
   stat.innerHTML = '"' + sd.name + '" / ' + mcount+ " meshe(s) / " + vcount + " points";
   stat.style.display = "block";
 }
+
+// Init lights
+function initLights() {
+  if(sd.lights == undefined)
+    return;
+
+  for(let i=0; i< sd.lights.length; i++) {
+    const color = new THREE.Color().setRGB( sd.lights[i].color.r,
+                                            sd.lights[i].color.g,
+                                            sd.lights[i].color.b);
+    const light = new THREE.DirectionalLight( color, sd.lights[i].intensity );
+    light.position.set( sd.lights[i].position.x,
+                        sd.lights[i].position.y, 
+                        sd.lights[i].position.z );
+    light.castShadow = false;
+    scene.add(light);
+
+    light.target.position.set(sd.lights[i].target.x, 
+                              sd.lights[i].target.y,
+                              sd.lights[i].target.z);
+   scene.add(light.target);
+   scene.add( new THREE.DirectionalLightHelper( light, 0.2 ) ); // DEBUG
+  }
+} 
 
 // Init controlls
 function initControls()
@@ -316,7 +341,7 @@ function initController()
   const beam_mat = new THREE.MeshStandardMaterial({ transparent: true,
                                                     alphaMap:alpha,
                                                     lightMapIntensity:0,
-                                                    opacity: 0.8,
+                                                    opacity: 1,
                                                     color: beam_color,
                                                     // emissive: 0xffffff
                                                     alphaTest:0.01
@@ -398,7 +423,6 @@ function onY() {
 
 function onZ() {params
   if (typeof model != "undefined") {
-    console.log(params.z);
     model.position.setZ( params.z );
     //controls.target.set( model.position.x, model.position.y, model.position.z );
     param_changed = true;

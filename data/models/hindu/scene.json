@@ -14,15 +14,15 @@
   
   "lights": [
     {
-      "position": {"x": 1, "y": 2, "z": 3 },
-      "target": {"x": 1, "y": 1, "z": 1 },
-      "intensity": 2,
-      "color": {"r": 0, "g": 255, "b": 0 }
+      "position": {"x": 3, "y": 3, "z": -3 },
+      "target": {"x": 0, "y": 0, "z": 0 },
+      "intensity": 0.02,
+      "color": {"r": 127, "g": 127, "b": 127 }
     },
     {
-      "position": {"x": 3, "y": 2, "z": 1 },
+      "position": {"x": 3, "y": -3, "z": 3 },
       "target": {"x": 0, "y": 0, "z": 0 },
-      "intensity": 1,
+      "intensity": 0.004,
       "color": {"r": 255, "g": 255, "b": 255 }
     }
   ]
