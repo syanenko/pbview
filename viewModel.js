@@ -8,7 +8,7 @@ import { ArcballControls } from 'three/addons/controls/ArcballControls.js';
 import { AsyncLoader } from './modules/AsyncLoader.js';
 import { InteractiveGroup } from './modules/interactive/InteractiveGroup.js';
 import { HTMLMesh } from './modules/interactive/HTMLMesh.js';
-import { GUI } from '/node_modules/lil-gui/dist/lil-gui.esm.min.js';
+import { GUI } from './node_modules/lil-gui/dist/lil-gui.esm.min.js';
 import { XRControllerModelFactory } from './modules/webxr/XRControllerModelFactory.js';
 import { VRButton } from './modules/webxr/VRButton.js';
 

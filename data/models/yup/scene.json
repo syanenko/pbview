@@ -11,6 +11,9 @@
 
   "bounds_min": {"x": -1, "y": -1, "z": -1 },
   "bounds_max": {"x": 1, "y": 1, "z": 1 },
+
+  "gizmos": false,
+  "vr": false,
   
   "lights": [
     {

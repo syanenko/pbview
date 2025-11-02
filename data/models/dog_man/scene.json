@@ -11,6 +11,9 @@
 
   "bounds_min": {"x": -1, "y": -1, "z": -1 },
   "bounds_max": {"x": 1, "y": 1, "z": 1 },
+
+  "gizmos": false,
+  "vr": false,
   
   "lights": [
     {
@@ -21,6 +24,12 @@
     },
     {
       "position": {"x": 2, "y": 1, "z": -2 },
+      "target": {"x": 0, "y": 0, "z": 0 },
+      "intensity": 0.01,
+      "color": {"r": 255, "g": 255, "b": 255 }
+    },
+    {
+      "position": {"x": -2, "y": 1, "z": -2 },
       "target": {"x": 0, "y": 0, "z": 0 },
       "intensity": 0.01,
       "color": {"r": 255, "g": 255, "b": 255 }

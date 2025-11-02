@@ -51,7 +51,7 @@
   <script type="module" src="./viewModel.js"></script>
 
   <header>
-    <div id='head' style="margin: 10px;" onclick="window.location.href = '.'">PB Viewer 0.06b<img src="./data/icons/menu.png" style="position: absolute; top:3px; left:auto; right:10px; opacity:100%"></div>
+    <div id='head' style="margin: 10px;" onclick="window.location.href = '.'">PB Viewer 0.07b<img src="./data/icons/menu.png" style="position: absolute; top:3px; left:auto; right:10px; opacity:100%"></div>
     <hr>
   </header>
 
@@ -60,29 +60,12 @@
   <div id="description" style="display:none"></div>
 
   <div id="container"></div>
-
   <div id="list"><br>
   <div class="link" onclick='viewModel("test")'    class="link">0. Test</div>
   <div class="link" onclick='viewModel("hindu")'   class="link">1. Hindu</div>
-  <div class="link" onclick='viewModel("yup")'  class="link">2. Yup</div>
-  <div class="link" onclick='viewModel("dragon")' class="link">3. Dragon (not centered !)</div>
+  <div class="link" onclick='viewModel("yup")'     class="link">2. Yup</div>
+  <div class="link" onclick='viewModel("dragon")'  class="link">3. Dragon (not centered !)</div>
   <div class="link" onclick='viewModel("dog_man")' class="link">4. Dog man</div>
-
-<!--
-  <img id="p1" src="./data/icons/link.png" alt='link'  onclick='viewImage("odsp1_left.png",
-                                                                          "odsp2_left.png",
-                                                                          Proj.CYLINDER)'>
-
-  <img id="p2" src="./data/images/pb/HampiIndia_VR180_infinite_zeroparallax/PDB_3272_icon.png" alt='link' 
-                onclick='viewImage("pb/HampiIndia_VR180_infinite_zeroparallax/PDB_3272_left.jpg",
-                                  "pb/HampiIndia_VR180_infinite_zeroparallax/PDB_3272_right.jpg",
-                                    Proj.VR180)'>
-
-  <img id="p3" src="./data/images/pb/HampiIndia_VR180_infinite_zeroparallax/PDB_3253_icon.png" alt='link' 
-                onclick='viewImage("pb/HampiIndia_VR180_infinite_zeroparallax/PDB_3253_left.jpg",
-                                  "pb/HampiIndia_VR180_infinite_zeroparallax/PDB_3253_right.jpg",
-                                    Proj.VR180)'><br>
--->
   </div>
 
   <!-- Stat -->
@@ -97,25 +80,15 @@
   </div>
 
   <button id="reset" style="position: absolute; bottom:20px; right:20px; display:none;" onclick="onReset()">Reset</button>
-<!--
-  <div id="settings" style='position: absolute; bottom:15px; left:20px; z-index:4; font-size: 130%; display:none;'>
-    <input id="gizmos" type="checkbox" onclick="setGizmos(this.checked)">
-    <label for="gizmos">Gizmos</label><br>
-  </div>
--->
 
   <!-- Studio link
   <a href="https://yesbird.online/" target="_blank" rel="noopener noreferrer" style="position:fixed; bottom: 10px; right: 20px; font-size: 120%; font-style: italic; color: #cccdce;">Yesbird studio 2025</a>
   -->
 
   <script>
-    // https://127.0.0.1:8086/?m=deep_space&e=env_space
     window.onload = function() {
       const params = new URLSearchParams(window.location.search);
       const model = params.get('m');
-
-      // viewModel("obj/test/model.obj");
-      // viewModel("obj/dog_man/final.obj");
       if(model) {
         viewModel(model);
       }
