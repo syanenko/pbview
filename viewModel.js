@@ -165,7 +165,10 @@ async function viewModel(name) {
   if(rotate)
     params.switch_any();
 
-  displayAxis(true);
+  if(debug)
+    displayAxis(true);
+
+  document.getElementById("reset").style.display = "block";
 }
 window.viewModel = viewModel;
 
@@ -237,7 +240,8 @@ function initLights() {
                               sd.lights[i].target.y,
                               sd.lights[i].target.z);
    scene.add(light.target);
-   scene.add( new THREE.DirectionalLightHelper( light, 0.2 ) ); // DEBUG
+   if(debug)
+     scene.add( new THREE.DirectionalLightHelper( light, 0.2 ) ); // DEBUG
   }
 } 
 
@@ -473,6 +477,7 @@ function onReset()
     model.setRotationFromEuler(euler);
   }
 }
+window.onReset = onReset;
 
 // Resize
 function onWindowResize() {
