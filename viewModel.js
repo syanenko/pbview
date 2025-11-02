@@ -170,10 +170,8 @@ async function viewModel(name) {
   if(rotate)
     params.switch_any();
 
-  if(debug)
-    displayAxis(true);
-
   document.getElementById("reset").style.display = "block";
+  document.getElementById("settings").style.display = "block";
 }
 window.viewModel = viewModel;
 
@@ -203,7 +201,6 @@ export async function loadModel(name)
         const map = tl.load(name + sd.texture);
         map.colorSpace = THREE.SRGBColorSpace;
         node.material = new THREE.MeshStandardMaterial( {map: map, side: THREE.DoubleSide } );
-        // node.material = new THREE.MeshStandardMaterial( {color: 0xFFFFFF, side: THREE.DoubleSide } ); // DEBUG
         node.material.needsUpdate = true;
       }
   });
@@ -245,8 +242,6 @@ function initLights() {
                               sd.lights[i].target.y,
                               sd.lights[i].target.z);
    scene.add(light.target);
-   if(debug)
-     scene.add( new THREE.DirectionalLightHelper( light, 0.2 ) ); // DEBUG
   }
 } 
 
@@ -305,6 +300,23 @@ function initGUI()
   // gui.close(); // Collapse by default
 }
 
+// Set gizmos
+function setGizmos(checked) {
+  displayAxis(checked);
+
+  if(checked) {
+    scene.traverse(function(node) {
+    if (node instanceof THREE.Light) {
+      scene.add( new THREE.DirectionalLightHelper( node, 0.2 ) );
+      console.log(node);
+    }})
+  } else {
+     ////// DEBUG ////////
+    // TODO: Remove it
+  }
+}
+window.setGizmos = setGizmos;
+
 //
 // Display axis
 //
@@ -317,7 +329,7 @@ let axis_y = new THREE.Vector3(0,1,0);
 let axis_z = new THREE.Vector3(0,0,1);
 let axis_len = 4;
 
-async function displayAxis(checked) {
+function displayAxis(checked) {
   if(checked) {
     arrow_helper_x = new THREE.ArrowHelper(axis_x, axis_o, axis_len, 'crimson');
     arrow_helper_y = new THREE.ArrowHelper(axis_y, axis_o, axis_len, 'green');

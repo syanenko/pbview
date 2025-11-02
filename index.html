@@ -98,6 +98,11 @@
 
   <button id="reset" style="position: absolute; bottom:20px; right:20px; display:none;" onclick="onReset()">Reset</button>
 
+  <div id="settings" style='position: absolute; bottom:15px; left:20px; z-index:4; font-size: 130%; display:none;'>
+    <input id="gizmos" type="checkbox" onclick="setGizmos(this.checked)">
+    <label for="gizmos">Gizmos</label><br>
+  </div>
+
   <!-- Studio link
   <a href="https://yesbird.online/" target="_blank" rel="noopener noreferrer" style="position:fixed; bottom: 10px; right: 20px; font-size: 120%; font-style: italic; color: #cccdce;">Yesbird studio 2025</a>
   -->
@@ -107,8 +112,6 @@
     window.onload = function() {
       const params = new URLSearchParams(window.location.search);
       const model = params.get('m');
-      //window.debug = params.get('d');
-      window.debug = true;
 
       // viewModel("obj/test/model.obj");
       // viewModel("obj/dog_man/final.obj");
