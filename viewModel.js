@@ -6,6 +6,7 @@ import * as THREE from 'three';
 //
 import { ArcballControls } from 'three/addons/controls/ArcballControls.js';
 import { AsyncLoader } from './modules/AsyncLoader.js';
+import { loadingManager } from './modules/AsyncLoader.js';
 import { InteractiveGroup } from './modules/interactive/InteractiveGroup.js';
 import { HTMLMesh } from './modules/interactive/HTMLMesh.js';
 import { GUI } from './node_modules/lil-gui/dist/lil-gui.esm.min.js';
@@ -147,7 +148,7 @@ async function viewModel(name) {
   container.appendChild( renderer.domElement );
 
   // Loader
-  textureLoader = new THREE.TextureLoader();
+  textureLoader = new THREE.TextureLoader(loadingManager);
 
   initControls();
   // initGUI();  
@@ -196,8 +197,7 @@ export async function loadModel(name)
         if(node.material) {
           node.material.dispose();
         }
-        const tl = new THREE.TextureLoader();
-        const map = tl.load(name + sd.texture);
+        const map = textureLoader.load(name + sd.texture);
         map.colorSpace = THREE.SRGBColorSpace;
         node.material = new THREE.MeshStandardMaterial( {map: map, side: THREE.DoubleSide } );
         node.material.needsUpdate = true;
