@@ -10,7 +10,7 @@ import { InteractiveGroup } from './modules/interactive/InteractiveGroup.js';
 import { HTMLMesh } from './modules/interactive/HTMLMesh.js';
 import { GUI } from '/node_modules/lil-gui/dist/lil-gui.esm.min.js';
 import { XRControllerModelFactory } from './modules/webxr/XRControllerModelFactory.js';
-// import { VRButton } from './modules/webxr/VRButton.js';
+import { VRButton } from './modules/webxr/VRButton.js';
 
 const MODEL_PATH = './data/models/';
 const ENV_PATH = './data/textures/';
@@ -154,24 +154,23 @@ async function viewModel(name) {
   initController();
   initLights();
   loadModel(name);
+  if(sd.gizmos)
+    displayAxis(true);
 
-  // Hilight controller
-/*
-  const light = new THREE.PointLight( 0xffffff, 1.5, 0, 0);
-  light.position.set( 40, 50, 20 );
-  scene.add( light );
-*/
+  if(sd.vr) {
+    let vrb = VRButton.createButton( renderer );
+    document.body.appendChild( vrb );
 
-  // let vrb = VRButton.createButton( renderer );
-  //vrb.style.setProperty('position', 'absolute');
-  //vrb.style.setProperty('top', '10px');
-  // document.body.appendChild( vrb );
+    // Hilight controller
+    // const light = new THREE.PointLight( 0xffffff, 1.5, 0, 0);
+    // light.position.set( 40, 50, 20 );
+    // scene.add( light );
+  }
  
   if(rotate)
     params.switch_any();
 
   document.getElementById("reset").style.display = "block";
-  document.getElementById("settings").style.display = "block";
 }
 window.viewModel = viewModel;
 
@@ -241,7 +240,10 @@ function initLights() {
     light.target.position.set(sd.lights[i].target.x, 
                               sd.lights[i].target.y,
                               sd.lights[i].target.z);
-   scene.add(light.target);
+    scene.add(light.target);
+
+    if(sd.gizmos)
+      scene.add( new THREE.DirectionalLightHelper( light, 0.2 ) );
   }
 } 
 
@@ -299,23 +301,6 @@ function initGUI()
   // params.switch_any(); // By default
   // gui.close(); // Collapse by default
 }
-
-// Set gizmos
-function setGizmos(checked) {
-  displayAxis(checked);
-
-  if(checked) {
-    scene.traverse(function(node) {
-    if (node instanceof THREE.Light) {
-      scene.add( new THREE.DirectionalLightHelper( node, 0.2 ) );
-      console.log(node);
-    }})
-  } else {
-     ////// DEBUG ////////
-    // TODO: Remove it
-  }
-}
-window.setGizmos = setGizmos;
 
 //
 // Display axis
