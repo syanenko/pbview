@@ -1,9 +1,14 @@
 import * as THREE from 'three';
-import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
+//
+// DEBUG
+// https://threejs.org/docs/?q=ArcballControls#ArcballControls.enableGizmos
+// https://threejs.org/examples/?q=arcball#misc_controls_arcball
+//
+import { ArcballControls } from 'three/addons/controls/ArcballControls.js';
 import { AsyncLoader } from './modules/AsyncLoader.js';
 import { InteractiveGroup } from './modules/interactive/InteractiveGroup.js';
 import { HTMLMesh } from './modules/interactive/HTMLMesh.js';
-import { GUI } from './node_modules/lil-gui/dist/lil-gui.esm.min.js';
+import { GUI } from '/node_modules/lil-gui/dist/lil-gui.esm.min.js';
 import { XRControllerModelFactory } from './modules/webxr/XRControllerModelFactory.js';
 // import { VRButton } from './modules/webxr/VRButton.js';
 
@@ -248,12 +253,18 @@ function initLights() {
 // Init controlls
 function initControls()
 {
-  controls = new TrackballControls ( camera, renderer.domElement );
+  controls = new ArcballControls ( camera, renderer.domElement );
+
+  // DEBUG
   controls.target.set( 0, 0, 0 );
-  controls.staticMoving = true;
-  controls.panSpeed = 1;
-  controls.rotateSpeed = 3;
-  controls.zoomSpeed = 2;
+  controls.enableAnimations = false;  
+  controls.enableFocus = false;
+  controls.setGizmosVisible = false;
+  controls.activateGizmos(false);
+
+  controls.panSpeed = 0.5;
+  controls.rotateSpeed = 1;
+  controls.zoomSpeed = 0.5;
 }
 
 // Init GUI
