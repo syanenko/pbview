@@ -1,3 +1,6 @@
+//
+// Patched: don't load materials
+//
 import {
 	BufferGeometry,
 	FileLoader,
