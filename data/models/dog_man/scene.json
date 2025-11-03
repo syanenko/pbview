@@ -1,7 +1,7 @@
 {
   "name": "Dog man",
 
-  "geometry": "final.obj",
+  "geometry": "final_opt.obj",
   "texture": "final.jpg",
 
   "background_color": {"r": 0.015, "g":0.015, "b": 0.015 },
