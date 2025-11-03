@@ -210,13 +210,16 @@ export async function loadModel(name)
   scene.add( model );
 
   // Stat
+  /*
   let stat = document.getElementById("stat");
   vcount = new Intl.NumberFormat('no-NO', {
     useGrouping: true,
     groupingSeparator: ' '
   }).format(vcount);
-
+  // TODO: Wrong number of points ?
   stat.innerHTML = '"' + sd.name + '" / ' + mcount+ " meshe(s) / " + vcount + " points";
+  */
+  stat.innerHTML = '"' + sd.name + '"';
   stat.style.display = "block";
 }
 
